@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)file:///C:/Users/SAMSUNG/Downloads/money-type%20(3).html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>나의 재무 MBTI 분석 🐿️ | 특성화고 홍보부스</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Jua&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  :root{
+    --ink:#3A2E26; --ink-soft:#6E5B4D;
+    --cream:#FFF6E9; --cream2:#FFE9D6;
+    --gold:#F5A623; --gold-d:#E0901A;
+    --acorn:#8B5E34;
+    --card-shadow: 0 18px 40px -12px rgba(120,80,40,.35);
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0; padding:0;}
+  body{
+    font-family:'Noto Sans KR',sans-serif; color:var(--ink);
+    background:linear-gradient(160deg,#FFF6E9 0%,#FFE9D6 55%,#FFDFC2 100%);
+    min-height:100vh; min-height:100dvh;
+    display:flex; align-items:center; justify-content:center;
+    padding:18px; line-height:1.55;
+  }
+  .display{font-family:'Jua',sans-serif; font-weight:400; letter-spacing:.2px;}
+  .stage{width:100%; max-width:430px; position:relative;}
+  .screen{display:none; animation:fade .45s ease both;}
+  .screen.active{display:block;}
+  @keyframes fade{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
+
+  /* ---------- INTRO ---------- */
+  .hero{
+    background:#fff; border-radius:30px; padding:34px 26px 30px;
+    box-shadow:var(--card-shadow); text-align:center; border:3px solid #fff;
+  }
+  .coin{
+    font-size:74px; line-height:1; display:inline-block;
+    animation:bob 2.4s ease-in-out infinite;
+    filter:drop-shadow(0 8px 10px rgba(180,120,40,.35));
+  }
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-10px) rotate(4deg);}}
+  .eyebrow{
+    display:inline-block; background:var(--cream2); color:var(--acorn);
+    font-weight:700; font-size:12.5px; padding:6px 14px; border-radius:99px;
+    letter-spacing:.5px; margin-bottom:14px;
+  }
+  .hero h1{font-size:30px; margin:6px 0 4px; color:var(--ink);}
+  .hero h1 .pt{color:var(--gold-d);}
+  .hero p{color:var(--ink-soft); font-size:15px; margin:10px 4px 0;}
+  .meta{
+    display:flex; justify-content:center; gap:18px; margin:22px 0 4px;
+    color:var(--acorn); font-weight:700; font-size:13px;
+  }
+  .meta span{background:var(--cream); padding:8px 14px; border-radius:14px;}
+  .btn{
+    display:block; width:100%; border:none; cursor:pointer;
+    font-family:'Jua',sans-serif; font-size:21px; color:#fff;
+    background:linear-gradient(180deg,var(--gold) 0%,var(--gold-d) 100%);
+    padding:17px; border-radius:20px; margin-top:24px;
+    box-shadow:0 10px 20px -6px rgba(224,144,26,.6); transition:transform .12s, box-shadow .12s;
+  }
+  .btn:active{transform:translateY(2px); box-shadow:0 6px 12px -6px rgba(224,144,26,.6);}
+  .btn.ghost{
+    background:#fff; color:var(--acorn); border:2.5px solid var(--cream2);
+    box-shadow:none; font-size:17px; padding:13px;
+  }
+  .btn-row{display:flex; gap:10px; margin-top:14px;}
+  .btn-row .btn{margin-top:0;}
+
+  /* ---------- QUIZ ---------- */
+  .bar-wrap{margin:2px 4px 16px;}
+  .bar-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;}
+  .bar-top b{font-family:'Jua'; color:var(--acorn); font-size:15px;}
+  .bar-top small{color:var(--ink-soft); font-weight:700; font-size:13px;}
+  .bar{height:12px; background:#fff; border-radius:99px; overflow:hidden; box-shadow:inset 0 2px 4px rgba(150,100,50,.15);}
+  .bar i{display:block; height:100%; width:0; border-radius:99px;
+    background:linear-gradient(90deg,#FFB627,#F5A623); transition:width .35s ease;}
+  .q-card{background:#fff; border-radius:26px; padding:26px 22px; box-shadow:var(--card-shadow); border:3px solid #fff;}
+  .q-num{font-family:'Jua'; color:var(--gold-d); font-size:15px; margin-bottom:6px;}
+  .q-text{font-family:'Jua'; font-size:21px; line-height:1.4; margin:0 0 20px; min-height:58px;}
+  .opt{
+    display:flex; align-items:center; gap:12px; width:100%; text-align:left;
+    background:var(--cream); border:2.5px solid var(--cream); cursor:pointer;
+    padding:15px 16px; border-radius:18px; margin-bottom:11px; font-size:15.5px;
+    font-weight:500; color:var(--ink); transition:all .14s; font-family:'Noto Sans KR';
+  }
+  .opt:active{transform:scale(.98);}
+  .opt:hover{border-color:var(--gold); background:#FFF3E0;}
+  .opt .dot{
+    flex:0 0 26px; height:26px; border-radius:50%; background:#fff;
+    border:2.5px solid #E8D5BE; transition:all .14s;
+  }
+  .opt:hover .dot{border-color:var(--gold); background:var(--gold);}
+  .back-link{display:block; text-align:center; margin:16px auto 0; background:none; border:none;
+    color:var(--ink-soft); font-weight:700; font-size:13.5px; cursor:pointer; text-decoration:underline;}
+
+  /* ---------- RESULT CARD ---------- */
+  .reveal{text-align:center; margin-bottom:6px;}
+  .reveal .small{font-family:'Jua'; color:var(--acorn); font-size:15px;}
+  /* the card that gets exported */
+  #cardCapture{padding:6px;}
+  .tcard{
+    position:relative; border-radius:28px; padding:30px 24px 26px; overflow:hidden;
+    box-shadow:var(--card-shadow); border:4px solid rgba(255,255,255,.9); text-align:center;
+  }
+  .tcard::before{
+    content:""; position:absolute; inset:0; opacity:.4;
+    background:radial-gradient(circle at 20% 15%, rgba(255,255,255,.9), transparent 45%);
+    pointer-events:none;
+  }
+  .tcard .stamp{
+    position:absolute; top:16px; right:18px; font-family:'Jua'; font-size:11px;
+    color:#fff; background:rgba(0,0,0,.16); padding:5px 11px; border-radius:99px; letter-spacing:.5px;
+  }
+  .tcard .face{font-size:88px; line-height:1; filter:drop-shadow(0 8px 10px rgba(0,0,0,.18)); margin-top:6px;}
+  .tcard .tname{font-family:'Jua'; font-size:30px; color:#fff; margin:10px 0 2px; text-shadow:0 2px 6px rgba(0,0,0,.18);}
+  .tcard .tsub{display:inline-block; background:rgba(255,255,255,.92); font-weight:700; font-size:13px;
+    padding:5px 14px; border-radius:99px; margin-bottom:14px;}
+  .tcard .slogan{font-family:'Jua'; color:#fff; font-size:17px; margin:0 0 16px; text-shadow:0 1px 4px rgba(0,0,0,.2);}
+  .tcard .panel{background:rgba(255,255,255,.95); border-radius:18px; padding:16px 16px 14px; text-align:left;}
+  .tcard .desc{font-size:14px; color:var(--ink); margin:0 0 14px;}
+  .row{margin-bottom:12px;}
+  .row:last-child{margin-bottom:0;}
+  .row .label{font-family:'Jua'; font-size:13.5px; margin-bottom:4px; display:flex; align-items:center; gap:6px;}
+  .row .val{font-size:13.5px; color:var(--ink-soft); line-height:1.5;}
+  .badges{display:flex; flex-wrap:wrap; gap:6px;}
+  .badges span{font-size:12px; font-weight:700; padding:4px 10px; border-radius:99px; color:#fff;}
+  .matchline{margin:14px 4px 0; font-size:12.5px; color:var(--ink-soft);}
+  .matchline b{color:var(--acorn);}
+
+  /* save + qr */
+  .save-box{margin-top:18px;}
+  .qr-box{
+    background:#fff; border-radius:22px; padding:18px; margin-top:14px; text-align:center;
+    box-shadow:var(--card-shadow); border:3px solid #fff;
+  }
+  .qr-box h3{font-family:'Jua'; font-size:16px; margin:0 0 4px; color:var(--ink);}
+  .qr-box p{font-size:12.5px; color:var(--ink-soft); margin:0 0 14px;}
+  #qrcode{display:inline-block; padding:10px; background:#fff; border-radius:14px; border:2px solid var(--cream2);}
+  #qrcode img, #qrcode canvas{display:block;}
+
+  /* save modal (long-press fallback) */
+  .modal{position:fixed; inset:0; background:rgba(40,28,18,.72); display:none;
+    align-items:center; justify-content:center; padding:22px; z-index:50; overflow-y:auto;}
+  .modal.show{display:flex; animation:fade .3s ease both;}
+  .modal-inner{background:#fff; border-radius:24px; padding:22px; max-width:380px; width:100%; text-align:center; max-height:90vh; overflow-y:auto;}
+  .modal-inner h3{font-family:'Jua'; font-size:19px; margin:0 0 10px;}
+  .modal-inner p{font-size:13.5px; color:var(--ink-soft); margin:0 0 14px;}
+  .modal-inner img{width:100%; border-radius:16px; box-shadow:var(--card-shadow); cursor:pointer; -webkit-user-select:none; user-select:none;}
+  .modal-inner .hint{margin-top:12px; font-size:12.5px; color:var(--gold-d); font-weight:700;}
+  .modal-close{margin-top:16px;}
+
+  .loading{text-align:center; padding:30px; font-family:'Jua'; color:var(--acorn);}
+  .foot{text-align:center; margin-top:18px; font-size:11.5px; color:var(--acorn); opacity:.75;}
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- ===== INTRO ===== -->
+  <section id="intro" class="screen active">
+    <div class="hero">
+      <span class="coin">🐷</span>
+      <div style="margin-top:8px"></div>
+      <span class="eyebrow">신일비즈니스고등학교</span>
+      <h1 class="display">나의 <span class="pt">재무 MBTI</span><br>분석하기</h1>
+      <p>20개의 질문으로 알아보는<br>나의 재무 MBTI! 나는 어떤 동물일까?</p>
+      <div class="meta">
+        <span>❓ 질문 20개</span>
+        <span>🐾 유형 6가지</span>
+        <span>⏱ 약 4분</span>
+      </div>
+      <button class="btn display" onclick="startQuiz()">테스트 시작하기 →</button>
+      <button class="btn ghost" onclick="showAllTypes()">유형 미리보기 👀</button>
+    </div>
+    <div class="foot">© 신일비즈니스고등학교</div>
+  </section>
+
+  <!-- ===== QUIZ ===== -->
+  <section id="quiz" class="screen">
+    <div class="bar-wrap">
+      <div class="bar-top"><b id="barLabel">시작!</b><small id="barCount">0 / 20</small></div>
+      <div class="bar"><i id="barFill"></i></div>
+    </div>
+    <div class="q-card">
+      <div class="q-num display" id="qNum">Q1</div>
+      <h2 class="q-text" id="qText">질문</h2>
+      <div id="opts"></div>
+    </div>
+    <button class="back-link" id="backBtn" onclick="prevQuestion()" style="display:none">← 이전 질문</button>
+  </section>
+
+  <!-- ===== RESULT ===== -->
+  <section id="result" class="screen">
+    <div class="reveal"><span class="small display">나의 재무 MBTI는…</span></div>
+    <div id="cardCapture">
+      <div class="tcard" id="tcard"></div>
+    </div>
+    <p class="matchline" id="matchLine"></p>
+
+    <div class="save-box">
+      <button class="btn display" onclick="saveCard()">📸 유형 카드 이미지로 저장</button>
+      <div class="btn-row">
+        <button class="btn ghost" onclick="restart()">🔄 다시하기</button>
+        <button class="btn ghost" onclick="showAllTypes()">🐾 전체 유형</button>
+      </div>
+    </div>
+
+    <div class="qr-box">
+      <h3>📱 내 폰으로 카드 받기</h3>
+      <p>아래 QR을 내 휴대폰으로 찍으면<br>이 카드를 바로 저장할 수 있어요!</p>
+      <div id="qrcode"></div>
+    </div>
+    <div class="foot">© 신일비즈니스고등학교</div>
+  </section>
+
+  <!-- ===== ALL TYPES ===== -->
+  <section id="allTypes" class="screen">
+    <div class="reveal" style="margin-bottom:14px"><span class="small display">재무 MBTI 6종 도감 🐾</span></div>
+    <div id="typeGrid"></div>
+    <button class="btn ghost" onclick="goIntro()" style="margin-top:14px">← 처음으로</button>
+    <div class="foot">© 신일비즈니스고등학교</div>
+  </section>
+
+</div>
+
+<!-- save modal -->
+<div class="modal" id="saveModal">
+  <div class="modal-inner">
+    <h3 class="display">카드가 완성됐어요! 🎉</h3>
+    <div id="saveGuide" style="font-size:13.5px; color:var(--ink-soft); margin:0 0 14px; background:var(--cream); border-radius:14px; padding:12px 14px; line-height:1.7;">
+      <!-- JS로 기기별 안내 삽입 -->
+    </div>
+    <img id="savedImg" alt="나의 재무 유형 카드" style="touch-action:manipulation;">
+    <a class="btn display" id="dlLink" download="my-finance-type.png" style="margin-top:14px; text-decoration:none; display:block;">⬇ 이미지 다운로드</a>
+    <button class="btn ghost modal-close" onclick="closeModal()" style="margin-top:10px;">닫기</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   재무 유형 데이터 (6유형)
+   ============================================================ */
+const TYPES = {
+  A:{ name:"알뜰 다람쥐", sub:"저축형 🐿️", face:"🐿️",
+      accent:"#E8943B",
+      grad:"linear-gradient(160deg,#FFD29E 0%,#E8943B 100%)", badge:"#C8762A",
+      slogan:"오늘의 절약이 내일의 도토리!",
+      desc:"미래를 위해 차곡차곡 모으는 당신! 충동구매를 잘 참고 작은 돈도 소중히 여기는 진정한 저축왕이에요.",
+      good:["자기 통제력 만렙","비상 상황에 강함","돈 모으는 속도 1등"],
+      tip:"가끔은 나를 위한 작은 보상도 OK! 너무 아끼다 기회를 놓치지 않기.",
+      money:"자동이체로 ‘선저축 후지출’ 습관 만들기",
+      match:"욜로 베짱이", clash:"잘 맞는 친구" },
+  B:{ name:"욜로 베짱이", sub:"소비형 🦗", face:"🦗",
+      accent:"#FF6FA5", grad:"linear-gradient(160deg,#FFC2DC 0%,#FF6FA5 100%)", badge:"#E04D86",
+      slogan:"인생은 한 번뿐, 지금을 즐겨!",
+      desc:"현재의 행복을 가장 소중히 여기는 당신! 좋아하는 것에 아낌없이 쓰고 삶을 즐기는 분위기 메이커예요.",
+      good:["높은 삶의 만족도","경험에 투자","어디서나 분위기 메이커"],
+      tip:"‘미래의 나’를 위한 작은 저축통장 하나만! 비상금은 꼭 필요해요.",
+      money:"용돈의 10%만 먼저 떼어 저축, 나머지는 마음껏!",
+      match:"알뜰 다람쥐" },
+  C:{ name:"투자 여우", sub:"투자형 🦊", face:"🦊",
+      accent:"#E8682C", grad:"linear-gradient(160deg,#FFBE9C 0%,#E8682C 100%)", badge:"#C0521F",
+      slogan:"돈이 돈을 벌게 하라!",
+      desc:"돈을 ‘불리는’ 데 관심 많은 영리한 당신! 가성비를 따지고 기회를 잘 포착하는 경제 감각의 소유자예요.",
+      good:["뛰어난 경제 감각","기회 포착력","도전 정신"],
+      tip:"모든 투자엔 위험이 따라요. ‘잃어도 괜찮은 돈’으로, 충분히 공부하고 시작!",
+      money:"소액 모의투자·경제 뉴스 읽기부터 시작하기",
+      match:"계획 부엉이" },
+  D:{ name:"계획 부엉이", sub:"계획형 🦉", face:"🦉",
+      accent:"#5C6BC0", grad:"linear-gradient(160deg,#C2CBFF 0%,#5C6BC0 100%)", badge:"#46529E",
+      slogan:"계획대로 착착, 돈도 내 손안에!",
+      desc:"예산을 짜고 기록하며 돈을 체계적으로 관리하는 당신! 즉흥보다 계획이 편한 진정한 살림 마스터예요.",
+      good:["돈 관리 능력 최고","강한 목표 달성력","돈 실수가 적음"],
+      tip:"계획에 없던 즐거움도 가끔은 OK! 너무 빡빡하면 지칠 수 있어요.",
+      money:"매주 5분 가계부 결산으로 새는 돈 찾기",
+      match:"투자 여우" },
+  E:{ name:"나눔 곰", sub:"관계·나눔형 🐻", face:"🐻",
+      accent:"#3FA85C", grad:"linear-gradient(160deg,#B6E8C6 0%,#3FA85C 100%)", badge:"#2E8546",
+      slogan:"함께 나눌 때 더 행복해!",
+      desc:"돈을 사람과의 관계와 경험에 쓰는 따뜻한 당신! 친구와 가족을 잘 챙기는 인간관계 부자예요.",
+      good:["인간관계 부자","베푸는 마음","함께하는 행복"],
+      tip:"베푸는 것도 좋지만 ‘나’를 위한 몫도 꼭 남겨두기. 거절도 용기예요.",
+      money:"‘나눔 예산’을 따로 정해두면 부담 없이 베풀 수 있어요",
+      match:"균형 돌고래" },
+  F:{ name:"균형 돌고래", sub:"균형형 🐬", face:"🐬",
+      accent:"#2E9BD6", grad:"linear-gradient(160deg,#B3E2FF 0%,#2E9BD6 100%)", badge:"#2280B6",
+      slogan:"모으고, 쓰고, 즐기고 — 완벽한 밸런스!",
+      desc:"저축과 소비, 계획과 즐거움 사이 균형을 잘 잡는 당신! 어느 한쪽에 치우치지 않는 현명한 밸런스 마스터예요.",
+      good:["안정감","유연한 사고","현명한 판단력"],
+      tip:"균형도 좋지만 한 번쯤 뚜렷한 재무 목표에 도전하면 더 성장해요!",
+      money:"‘50:30:20 법칙’(필요·욕구·저축)으로 균형 유지",
+      match:"나눔 곰" },
+};
+
+/* ============================================================
+   질문 20개 (각 보기는 6유형에 균형 있게 배분)
+   ============================================================ */
+const Q = [
+ {t:"용돈을 받으면 가장 먼저 하는 일은?",o:[
+   ["일부를 저축통장에 먼저 넣는다","A"],["사고 싶었던 걸 바로 산다","B"],
+   ["불릴 방법(적금·주식 등)을 알아본다","C"],["어디에 쓸지 예산부터 짠다","D"],
+   ["친구·가족과 뭐 할지 생각한다","E"],["모으고 쓸 비율을 적당히 나눈다","F"]]},
+ {t:"갖고 싶은 물건이 생기면?",o:[
+   ["세일·최저가를 찾아 아껴 산다","A"],["고민 없이 지금 바로 산다","B"],
+   ["중고로 싸게 사서 남은 돈을 굴린다","C"],["정말 필요한지 목록에 적어두고 고민","D"],
+   ["친구도 같이 살지 물어본다","E"],["필요하면 적당한 선에서 산다","F"]]},
+ {t:"세뱃돈 10만 원이 생겼다!",o:[
+   ["9만 원 저축, 1만 원만 쓴다","A"],["평소 못 사던 걸 큰맘 먹고 산다","B"],
+   ["불릴 방법(주식·적금 등)을 찾는다","C"],["쓸 곳을 항목별로 나눠 계획한다","D"],
+   ["친구·가족 선물도 챙긴다","E"],["절반은 모으고 절반은 쓴다","F"]]},
+ {t:"내 통장 잔액을 나는?",o:[
+   ["줄어들까 봐 자주 확인한다","A"],["잘 모른다, 있으면 쓰는 편","B"],
+   ["굴릴 종잣돈이 얼마인지로 본다","C"],["목표까지 얼마 남았는지 정확히 안다","D"],
+   ["같이 쓸 일에 얼마 있나로 본다","E"],["대략 알고 균형 있게 쓴다","F"]]},
+ {t:"친구가 “오늘 내가 살게!” 하면?",o:[
+   ["다음엔 더 저렴한 데로 내가 산다","A"],["신난다, 고맙게 얻어먹는다","B"],
+   ["다음에 더 가성비 좋게 보답한다","C"],["받은 만큼 다음을 위해 메모해둔다","D"],
+   ["다음엔 내가 더 크게 쏜다","E"],["다음에 비슷하게 갚는다","F"]]},
+ {t:"용돈기입장(가계부 앱)은?",o:[
+   ["아낄 곳 찾으려고 꼼꼼히 쓴다","A"],["그게 뭐야? 거의 안 쓴다","B"],
+   ["돈 굴릴 곳 분석용으로 쓴다","C"],["매일 빠짐없이 기록한다","D"],
+   ["같이 쓴 친구들과 정산용으로 쓴다","E"],["큰 지출만 가끔 적는다","F"]]},
+ {t:"쇼핑몰 대규모 할인 행사를 보면?",o:[
+   ["필요 없으면 거들떠보지 않는다","A"],["일단 장바구니부터 가득 담는다","B"],
+   ["진짜 이득인지 원가를 따져본다","C"],["사려던 목록에 있는 것만 본다","D"],
+   ["친구 선물 살 게 있나 둘러본다","E"],["사려던 것만 할인받아 산다","F"]]},
+ {t:"나에게 ‘돈’이란?",o:[
+   ["미래를 지키는 안전장치","A"],["지금을 즐기는 수단","B"],
+   ["불려야 하는 씨앗","C"],["계획대로 굴러가게 하는 연료","D"],
+   ["함께 나눌 때 가치 있는 것","E"],["모으고 쓰는 균형이 중요한 것","F"]]},
+ {t:"받고 싶은 생일선물은?",o:[
+   ["현금이나 상품권","A"],["평소 갖고 싶던 비싼 아이템","B"],
+   ["주식 한 주 같은 ‘굴릴 수 있는’ 것","C"],["갖고 싶던 걸 미리 정해 딱 그것","D"],
+   ["다 같이 노는 파티","E"],["실용적이면서 적당한 선물","F"]]},
+ {t:"친구들과 여행 경비를 모을 때?",o:[
+   ["더 싸게 가는 방법을 찾는다","A"],["일단 즐기고 돈 얘긴 나중에","B"],
+   ["더 가성비 좋은 코스를 짠다","C"],["총무 맡아 정산을 담당한다","D"],
+   ["못 내는 친구 몫을 슬쩍 보탠다","E"],["적당히 내고 즐겁게 다녀온다","F"]]},
+ {t:"아르바이트 첫 월급, 나는?",o:[
+   ["대부분 저축한다","A"],["나에게 주는 보상! 시원하게 쓴다","B"],
+   ["일부로 투자·재테크를 공부한다","C"],["쓸 계획부터 세운다","D"],
+   ["부모님·친구 선물을 산다","E"],["저축·소비를 적당히 나눈다","F"]]},
+ {t:"사고 싶은 게 너무 비쌀 때?",o:[
+   ["돈 모일 때까지 참고 모은다","A"],["할부로라도 지금 산다","B"],
+   ["그 돈으로 더 가치 있는 게 있나 본다","C"],["살지 말지 며칠 고민하고 정한다","D"],
+   ["꼭 필요하면 도움받아 마련한다","E"],["적당히 돈 모이면 산다","F"]]},
+ {t:"편의점에서 나는?",o:[
+   ["1+1·할인 상품만 고른다","A"],["먹고 싶은 거 다 담는다","B"],
+   ["가성비 따져 최선을 고른다","C"],["살 것만 정해두고 그것만","D"],
+   ["친구 것도 같이 사준다","E"],["먹고 싶은 것 한두 개만 적당히","F"]]},
+ {t:"돈 관련 목표가 있다면?",o:[
+   ["1년에 ○○만 원 모으기","A"],["목표? 그냥 지금을 즐기기","B"],
+   ["종잣돈 만들어 불리기","C"],["매달 예산 안 넘기기","D"],
+   ["소중한 사람에게 베풀기","E"],["적당히 모으고 적당히 쓰기","F"]]},
+ {t:"모둠 과제 ‘1만 원으로 행복 찾기’!",o:[
+   ["안 쓰고 남겨 저축한다","A"],["다 써서 최대한 즐긴다","B"],
+   ["1만 원으로 뭘 만들어 팔지 고민","C"],["계획 세워 알뜰히 나눠 쓴다","D"],
+   ["친구들과 나눠 함께 쓴다","E"],["절반만 쓰고 절반은 남긴다","F"]]},
+ {t:"용돈이 다 떨어졌을 때?",o:[
+   ["따로 모아둔 비상금이 있다","A"],["부모님께 더 달라고 조른다","B"],
+   ["안 쓰는 물건을 중고로 판다","C"],["다음 용돈까지 계획적으로 버틴다","D"],
+   ["친구가 보태주거나 같이 해결","E"],["남은 기간 적당히 아껴 버틴다","F"]]},
+ {t:"내 소비 스타일을 한 단어로?",o:[
+   ["절약 💰","A"],["플렉스 🎉","B"],
+   ["가성비 🦊","C"],["계획 📒","D"],
+   ["나눔 🤝","E"],["균형 ⚖️","F"]]},
+ {t:"친구가 돈을 빌려달라고 하면?",o:[
+   ["잘 안 빌려준다, 내 돈은 소중하니까","A"],["있으면 그냥 빌려준다","B"],
+   ["부담 안 되는 선에서만 빌려준다","C"],["언제 갚을지 정해두고 빌려준다","D"],
+   ["형편 되면 안 받을 생각으로 준다","E"],["무리 안 가는 선에서 빌려준다","F"]]},
+ {t:"미래의 나는 돈을 어떻게 다룰까?",o:[
+   ["차곡차곡 모은 알부자","A"],["인생을 즐기며 쓰는 사람","B"],
+   ["투자로 자산을 불린 사람","C"],["계획적으로 관리하는 사람","D"],
+   ["주변과 나누며 사는 사람","E"],["적당히 모으고 적당히 즐기는 사람","F"]]},
+ {t:"갑자기 생긴 공돈 5만 원, 나는?",o:[
+   ["전부 저축한다","A"],["신나게 다 써버린다","B"],
+   ["굴릴 방법을 찾아 투자한다","C"],["미리 정한 곳에 계획대로 쓴다","D"],
+   ["친구들과 나눠 쓴다","E"],["절반 저축, 절반 사용","F"]]},
+];
+
+/* ============================================================
+   상태 & 화면 전환
+   ============================================================ */
+let idx = 0;
+let scores = {A:0,B:0,C:0,D:0,E:0,F:0};
+let answers = [];
+
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function goIntro(){ show('intro'); }
+
+function startQuiz(){
+  idx=0; scores={A:0,B:0,C:0,D:0,E:0,F:0}; answers=[];
+  show('quiz'); renderQuestion();
+}
+
+function renderQuestion(){
+  const q = Q[idx];
+  document.getElementById('qNum').textContent = "Q"+(idx+1);
+  document.getElementById('qText').textContent = q.t;
+  document.getElementById('barCount').textContent = (idx)+" / 20";
+  document.getElementById('barFill').style.width = (idx/20*100)+"%";
+  document.getElementById('barLabel').textContent =
+    idx<7?"워밍업 🔥": idx<14?"집중! 💪": "거의 다 왔어요 🎉";
+  document.getElementById('backBtn').style.display = idx>0?"block":"none";
+  const wrap = document.getElementById('opts');
+  wrap.innerHTML='';
+  const opts = q.o.slice();
+  for(let i=opts.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[opts[i],opts[j]]=[opts[j],opts[i]];}
+  opts.forEach(([text,type])=>{
+    const b=document.createElement('button');
+    b.className='opt';
+    b.innerHTML=`<span class="dot"></span><span>${text}</span>`;
+    b.onclick=()=>pick(type);
+    wrap.appendChild(b);
+  });
+}
+
+function pick(type){
+  scores[type]++; answers[idx]=type; idx++;
+  if(idx>=Q.length){ document.getElementById('barFill').style.width="100%"; finish(); }
+  else renderQuestion();
+}
+function prevQuestion(){
+  if(idx===0) return;
+  idx--; const prev=answers[idx];
+  if(prev) scores[prev]--;
+  renderQuestion();
+}
+
+function topType(){
+  // 동점이면 응답에서 먼저 등장한 유형 우선
+  let max=Math.max(...Object.values(scores));
+  let winners=Object.keys(scores).filter(k=>scores[k]===max);
+  if(winners.length===1) return winners[0];
+  for(const a of answers){ if(winners.includes(a)) return a; }
+  return winners[0];
+}
+
+/* ============================================================
+   결과 카드 렌더
+   ============================================================ */
+function buildCardHTML(key){
+  const t=TYPES[key];
+  return `<div class="stamp display">FINANCE TYPE · ${key}</div>
+    <div class="face">${t.face}</div>
+    <div class="tname display">${t.name}</div>
+    <div class="tsub" style="color:${t.badge}">${t.sub}</div>
+    <div class="slogan display">“${t.slogan}”</div>
+    <div class="panel">
+      <p class="desc">${t.desc}</p>
+      <div class="row">
+        <div class="label" style="color:${t.badge}">✨ 나의 강점</div>
+        <div class="badges">${t.good.map(g=>`<span style="background:${t.accent}">${g}</span>`).join('')}</div>
+      </div>
+      <div class="row">
+        <div class="label" style="color:${t.badge}">💡 이것만 기억해요</div>
+        <div class="val">${t.tip}</div>
+      </div>
+      <div class="row">
+        <div class="label" style="color:${t.badge}">🪙 추천 금융 습관</div>
+        <div class="val">${t.money}</div>
+      </div>
+    </div>`;
+}
+
+function showResult(key){
+  const t=TYPES[key];
+  const card=document.getElementById('tcard');
+  card.style.background=t.grad;
+  card.innerHTML=buildCardHTML(key);
+  document.getElementById('matchLine').innerHTML =
+    `나와 환상의 짝꿍은 <b>${t.match}</b> 유형! 친구들과 비교해보세요 🐾`;
+  buildQR(key);
+  show('result');
+}
+function finish(){ showResult(topType()); }
+
+/* ============================================================
+   QR 코드 (스캔하면 내 폰에서 카드 바로 보기 → 저장)
+   ============================================================ */
+function buildQR(key){
+  const box=document.getElementById('qrcode');
+  box.innerHTML='';
+  let base = location.origin && location.origin!=='null'
+    ? location.origin+location.pathname : location.href.split('?')[0];
+  const url = base + "?card=" + key;
+  new QRCode(box,{ text:url, width:150, height:150,
+    colorDark:"#3A2E26", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
+}
+
+/* ============================================================
+   기기 감지
+   ============================================================ */
+const ua = navigator.userAgent || '';
+const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+const isAndroid = /Android/.test(ua);
+const isMobile = isIOS || isAndroid;
+
+/* ============================================================
+   카드 이미지 저장 (html2canvas)
+   ============================================================ */
+async function saveCard(){
+  const node = document.getElementById('cardCapture');
+  const btn = document.querySelector('#result .btn.display');
+  if(btn){ btn.textContent='⏳ 생성 중...'; btn.disabled=true; }
+  try{
+    if(document.fonts && document.fonts.ready) await document.fonts.ready;
+    // 잠깐 대기 (폰트 렌더 안정화)
+    await new Promise(r=>setTimeout(r,300));
+    const canvas = await html2canvas(node,{
+      scale: 2.5,
+      backgroundColor: '#FFF6E9',
+      useCORS: true,
+      logging: false,
+      allowTaint: true
+    });
+    const data = canvas.toDataURL('image/png');
+
+    // 모달에 이미지 세팅
+    const imgEl = document.getElementById('savedImg');
+    const dlEl  = document.getElementById('dlLink');
+    imgEl.src = data;
+    dlEl.href = data;
+    dlEl.download = '나의-재무유형-' + Date.now() + '.png';
+
+    // 기기별 안내 문구
+    const guide = document.getElementById('saveGuide');
+    if(isIOS){
+      guide.innerHTML = '📱 <b>iPhone / iPad 저장 방법</b><br>① 아래 이미지를 <b>길게 꾹 누르세요</b><br>② 메뉴에서 <b>"사진에 저장"</b>을 탭하세요';
+      dlEl.style.display = 'none'; // iOS Safari는 download 속성 동작 불안정
+    } else if(isAndroid){
+      guide.innerHTML = '📱 <b>Android 저장 방법</b><br>① 아래 <b>"이미지 다운로드"</b> 버튼을 누르거나<br>② 이미지를 <b>길게 눌러</b> 저장하세요';
+      dlEl.style.display = 'block';
+    } else {
+      guide.innerHTML = '💻 아래 버튼을 눌러 이미지를 저장하세요.';
+      dlEl.style.display = 'block';
+      // 데스크톱은 자동 다운로드
+      const a = document.createElement('a');
+      a.href = data;
+      a.download = '나의-재무유형-' + Date.now() + '.png';
+      document.body.appendChild(a); a.click(); a.remove();
+    }
+
+    document.getElementById('saveModal').classList.add('show');
+  } catch(err){
+    console.error(err);
+    alert('이미지 생성 중 문제가 발생했어요.\n스크린샷으로 저장해 주세요! 📸');
+  } finally {
+    if(btn){ btn.textContent='📸 유형 카드 이미지로 저장'; btn.disabled=false; }
+  }
+}
+function closeModal(){ document.getElementById('saveModal').classList.remove('show'); }
+
+/* ============================================================
+   전체 유형 도감
+   ============================================================ */
+function showAllTypes(){
+  const grid=document.getElementById('typeGrid');
+  grid.innerHTML='';
+  Object.keys(TYPES).forEach(k=>{
+    const t=TYPES[k];
+    const el=document.createElement('div');
+    el.style.cssText=`background:${t.grad};border-radius:20px;padding:16px 18px;margin-bottom:11px;
+      display:flex;align-items:center;gap:14px;box-shadow:var(--card-shadow);border:3px solid rgba(255,255,255,.85)`;
+    el.innerHTML=`<div style="font-size:42px;flex:0 0 auto">${t.face}</div>
+      <div style="text-align:left">
+        <div class="display" style="font-size:19px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.2)">${t.name}</div>
+        <div style="display:inline-block;background:rgba(255,255,255,.92);font-weight:700;font-size:11px;padding:3px 9px;border-radius:99px;margin:3px 0;color:${t.badge}">${t.sub}</div>
+        <div style="font-size:12.5px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.18)">“${t.slogan}”</div>
+      </div>`;
+    grid.appendChild(el);
+  });
+  show('allTypes');
+}
+
+function restart(){ startQuiz(); }
+
+/* ============================================================
+   QR로 들어온 경우(?card=X) → 카드 바로 보여주기
+   ============================================================ */
+(function init(){
+  const params=new URLSearchParams(location.search);
+  const c=params.get('card');
+  if(c && TYPES[c.toUpperCase()]){
+    showResult(c.toUpperCase());
+  }
+})();
+</script>
+
+
+</body></html>
